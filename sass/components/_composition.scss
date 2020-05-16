@@ -1,0 +1,54 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    //responsive image
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+    border-radius: 2px;
+    //in reference to composition class
+    position: absolute;
+    transition: all .2s;
+    //default z index of all images
+    z-index: 5;
+
+
+    &--p1 {
+      left: 0;
+      // up 20px
+      top: -2rem;
+    }
+    &--p2 {
+      //0 margin from the right of parent class
+      right: 0;
+      //20px margin from the top of the parent class
+      top: 2rem;
+    }
+    &--p3 {
+      //20% margin from the left of the parent class
+      left: 20%;
+      //100px margin from the top
+      top: 10rem;
+    }
+
+    //when any image is hovered
+    &:hover {
+      //slightly enlarge image and move image up slightly
+      transform: scale(1.05) translateY(-.5rem);
+      //closer to user impression (increase shadow)
+      box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+      z-index: 6;
+      //add border to image
+      outline: 1rem solid $color-primary;
+      //space between image and outline
+      outline-offset: 2rem;
+    }
+
+  }
+  //composition:hover composition__photo:not(:hover)
+  //when we hover the composition, select composition photos that are not hovered
+  &:hover &__photo:not(:hover) {
+    transform: scale(.95);
+  }
+
+}

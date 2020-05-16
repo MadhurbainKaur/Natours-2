@@ -1,0 +1,114 @@
+//button is more classified as a component because it is a
+//block, reuseable across the page, independent, works everywhere, and a building block that can be used anywhere
+.btn {
+  //apply same styles to the btn class as well
+  &,
+  /* link and visited pseudo class */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /* all properties are enabled to be animated for 0.2seconds */
+    transition: all 0.2s;
+    position: relative;
+    font-size: $default-font-size;
+
+    //change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    /* first element moves up - in css, y axis is positive going down*/
+    transform: translateY(-3px);
+    /* 0 shadow in the x direction and 10px on the y axis; */
+    /* 20px blur */
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+      /* double the element size */
+      transform: scaleX(1.4) scaleY(1.6);
+      /* fades to 0 */
+      opacity: 0;
+    }
+  }
+  /* active state affects the initial state of the button */
+  &:active,
+  &:focus {
+    /* when button is clicked, it will move down a little from the hover state */
+    transform: translateY(-1px);
+    /* reduce blur effect so it looks closer the the page when clicked */
+    box-shadow: 0 0.5rem 1rem rgba($color-black, .2);
+    outline: none;
+
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+  /* basically treated like a child of the btn element */
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    /* animate button from bottm for 0.5s with ease-out after a 0.75s delay */
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* automatically apply animations in reverse order (move in from bottom first) */
+    animation-fill-mode: backwards;
+  }
+}
+
+//learn more button
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    //allow animation for all elements for 0.2sec
+    transition: all .2s;
+  }
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    //x-direction y-direction blur color
+    box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    //move the button up 2px
+    transform: translateY(-2px);
+  }
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    //back to inittial position
+    transform: translateY(0);
+  }
+}

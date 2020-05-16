@@ -1,0 +1,62 @@
+/*Animations*/
+@keyframes moveInLeft {
+  /* 0%- before the animation starts  */
+  0% {
+    /* invisible */
+    opacity: 0;
+    /* only animate in the x-direction */
+    /*will start 100px from the left*/
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    /* move right 10px 80% through the animation */
+    transform: translateX(1rem);
+  }
+
+  100% {
+    /* opaque */
+    opacity: 1;
+    /* 0 is at current position (without animation) */
+    transform: translate(0);
+  }
+}
+@keyframes moveInRight {
+  /* 0%- before the animation starts  */
+  0% {
+    /* invisible */
+    opacity: 0;
+    /* only animate in the x-direction */
+    /* will start 100px from the right */
+    transform: translateX(10rem);
+  }
+
+  80% {
+    /* move left 10px 80% through the animation */
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    /* opaque */
+    opacity: 1;
+    /* 0 is at current position (without animation) */
+    transform: translate(0);
+  }
+}
+@keyframes moveInBottom {
+  /* 0%- before the animation starts  */
+  0% {
+    /* invisible */
+    opacity: 0;
+    /* only animate in the y-direction */
+    /* will start 100px from the bottom */
+    transform: translateY(3rem);
+  }
+
+  100% {
+    /* opaque */
+    opacity: 1;
+    /* 0 is at current position (without animation) */
+    transform: translate(0);
+  }
+}

@@ -1,0 +1,27 @@
+//base folder is for basic definitions of entire project
+
+/* Browser reset using uiversal selector */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* each element will inherit box-sizing from body */
+  box-sizing: inherit;
+}
+
+
+//even though html section only has typography element, it is more classified
+//as a base because it defines what 1rem is (changes the page size too)
+html {
+  /* set root font size so it is easier to calculate rem*/
+  /* 1 rem = 10px */
+  /* 10px = 62.5% (10/16)*/
+  font-size: 62.5%;
+
+}
+/* Set project-wide font settings so children can inherit */
+
+body {
+  box-sizing: border-box;
+}

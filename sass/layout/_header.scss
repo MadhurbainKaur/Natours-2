@@ -1,0 +1,41 @@
+//header could be classified as a layout element
+
+.header {
+  /* 95% of the viewport height */
+  height: 95vh;
+  /* can specify 2 values for a property by using a comma (we want gradient to be on top of image so it will come first) */
+  /* use background image property to use gradient */
+  /* gradient will go to the right bottom corner */
+  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url("../img/hero.jpg");
+  /* will fit the background in the width of the vieport */
+  background-size: cover;
+  /* top of the image will always stick to the top of the container (even when resizing)*/
+  background-position: top;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* values are from top-left, top-right, bottom-right, bottom-left */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+
+  &__logo-box {
+    position: absolute;
+    /* 40px top and left margin from its parent element that has a relative position */
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+    /* only need to set height or width of the image, the other property will automatically adjust */
+  }
+
+  &__text-box {
+    position: absolute;
+    /* top and left are in relation to the parent element */
+    top: 40%;
+    left: 50%;
+    /* elements are shifted half of the width to the left and half of the height up */
+    transform: translate(-50%, -50%);
+    /* set text-align to center for button */
+    text-align: center;
+  }
+}

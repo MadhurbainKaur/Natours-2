@@ -1,0 +1,71 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: rgba($color-white, .6);
+  border-radius: 3px;
+  padding: 6rem 6rem 6rem 9rem;
+  font-size: $default-font-size;
+  //create a parallelogram by using skew
+  transform: skewX(-12deg);
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    //radius: 50% of height and width of element
+    //position: centered horizontally and vertically
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    //only 1 transform property works, so we need to use skew here
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+    //hide the lines that show up
+    overflow: hidden;
+  }
+
+  &__img {
+    //100% of 15rem
+    height: 100%;
+    //translate image to left to center
+    //initial state- before hover
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    transition: all .5s;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //initial state of caption should be further down positioned and not visible
+    transform: translate(-50%, 20%);
+    opacity: 0;
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    //enable animation
+    transition: all .5s;
+    backface-visibility: hidden;
+  }
+  //when story is hovered, make changes to the caption
+  &:hover &__caption {
+    //make visible and center
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  //when story is hovered, make changes to the img
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    //add a filter to the image
+    filter: blur(3px) brightness(80%);
+
+  }
+}
