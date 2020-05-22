@@ -10,10 +10,49 @@
   &__content {
     @include absCenter;
     width: 75%;
-
-    height: 50rem;
-
     background-color: $color-white;
     box-sizing: 0 2rem 4rem rgba($color-black, .2);
+    border-radius: 3px;
+    //set parent to table
+    display: table;
+    // hide anything that overflows the content
+    overflow: hidden;
+  }
+
+  &__left {
+    // take up 1/3 of the parent container
+    width: (100%/3);
+    display: table-cell;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+
+  &__right {
+    //take up 2/3 of the parent container
+    width: 2*(100%/3);
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    //create 2 columns
+    column-count: 2;
+    //create a gap between the columns
+    column-gap: 4rem;
+    //create a border between the columns
+    column-rule: 1px solid $color-grey-light-2;
+    //automatically hyphenate words that are too long
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    //pretty useless- not supported in most browsers..
+    hyphens: auto;
   }
 }
