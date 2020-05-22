@@ -30,10 +30,8 @@
 
   &__text-box {
     position: absolute;
-    /* top and left are in relation to the parent element */
     top: 40%;
     left: 50%;
-    /* elements are shifted half of the width to the left and half of the height up */
     transform: translate(-50%, -50%);
     /* set text-align to center for button */
     text-align: center;

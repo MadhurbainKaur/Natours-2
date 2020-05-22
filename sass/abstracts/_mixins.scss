@@ -1,9 +1,18 @@
 //grid
-
 @mixin clearfix {
   &::after {
     content: "";
     display: table;
     clear: both;
   }
+}
+
+//center element
+@mixin absCenter {
+  position: absolute;
+  /* top and left are in relation to the parent element */
+  top: 50%;
+  left: 50%;
+  /* elements are shifted half of the width to the left and half of the height up */
+  transform: translate(-50%, -50%);
 }
