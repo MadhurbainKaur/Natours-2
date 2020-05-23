@@ -7,6 +7,11 @@
   background-color: rgba($color-black, .8);
   z-index: 3000;
 
+  //initially hide this section
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+
   &__content {
     @include absCenter;
     width: 75%;
@@ -17,6 +22,12 @@
     display: table;
     // hide anything that overflows the content
     overflow: hidden;
+
+    opacity: 0;
+    // cannot have 2 transforms in the same declaration block, so we need to declare the mixin tranform in the same line
+    transform: translate(-50%, -50%) scale(0);
+    //animate all for .4s after a .2s delay
+    transition: all .5s .2s;
   }
 
   &__left {
@@ -54,5 +65,37 @@
     -webkit-hyphens: auto;
     //pretty useless- not supported in most browsers..
     hyphens: auto;
+  }
+
+  //open states
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // style the content when popup becomes the target
+  &:target &__content {
+    //scale back to 100% when the popup opens
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    &:link,
+    &:visited {
+      color: $color-grey-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      line-height: 1;
+      transition: all .2s;
+    }
+    &:hover {
+      color: $color-primary;
+
+    }
   }
 }
