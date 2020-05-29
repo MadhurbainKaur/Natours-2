@@ -9,7 +9,17 @@
   //select everything EXCEPT the last child
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+    //decrease margin
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
   }
+
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
+
   //insert clearfix mixin
   @include clearfix;
   //attribute selector will select all elements where the class name BEGINS with col-
@@ -20,6 +30,16 @@
     // margin on the right side of all columns except the last one
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    //change width to 100
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
   //Column 1 of 2
