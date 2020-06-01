@@ -6,7 +6,10 @@
   /* can specify 2 values for a property by using a comma (we want gradient to be on top of image so it will come first) */
   /* use background image property to use gradient */
   /* gradient will go to the right bottom corner */
-  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url("../img/hero.jpg");
+  background-image: linear-gradient(to right bottom,
+  rgba($color-primary-light, 0.8),
+  rgba($color-primary-dark, 0.8)),
+  url("../img/hero-small.jpg");
   /* will fit the background in the width of the vieport */
   background-size: cover;
   /* top of the image will always stick to the top of the container (even when resizing)*/
@@ -15,6 +18,15 @@
   /* values are from top-left, top-right, bottom-right, bottom-left */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
+
+  //load high resolution image when res is at least 192dpi and screen width is larger than 600px
+  //or when screen size is greater than 2000px;
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    background-image: linear-gradient(to right bottom,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.8)),
+    url("../img/hero.jpg");
+  }
 
   @include respond(tab-land) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
