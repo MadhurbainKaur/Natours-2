@@ -24,17 +24,26 @@
     width: 15rem;
     height: 15rem;
     float: left;
-    //radius: 50% of height and width of element
-    //position: centered horizontally and vertically
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     //only 1 transform property works, so we need to use skew here
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
-    //hide the lines that show up
+    //hide the stuff that ovrflows the shape element
     overflow: hidden;
+    //border-radius of 50% will be appied if clip-path doesn't work
+    border-radius: 50%;
+
+    //if clip-path property is supported
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      //radius: 50% of height and width of element
+      //position: centered horizontally and vertically
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      //if clip-path is supported, remove border radius
+      border-radius: none;
+    }
+
     @include respond(phone){
       transform: translateX(-3rem) skewX(0);
     }

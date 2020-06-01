@@ -1,8 +1,8 @@
 //header could be classified as a layout element
 
 .header {
-  /* 95% of the viewport height */
-  height: 95vh;
+  /* 85% of the viewport height if clip-path is not supported */
+  height: 85vh;
   /* can specify 2 values for a property by using a comma (we want gradient to be on top of image so it will come first) */
   /* use background image property to use gradient */
   /* gradient will go to the right bottom corner */
@@ -14,14 +14,23 @@
   background-size: cover;
   /* top of the image will always stick to the top of the container (even when resizing)*/
   background-position: top;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* values are from top-left, top-right, bottom-right, bottom-left */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
   position: relative;
+
+  //if clip-path property is supported
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* values are from top-left, top-right, bottom-right, bottom-left */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 95vh;
+  }
 
   //load high resolution image when res is at least 192dpi and screen width is larger than 600px
   //or when screen size is greater than 2000px;
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  //for safari, test if device pixel ratio is at least 2
+  @media (min-resolution: 192dpi) and (min-width: 37.5em),
+  (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+  (min-width: 125em) {
     background-image: linear-gradient(to right bottom,
     rgba($color-primary-light, 0.8),
     rgba($color-primary-dark, 0.8)),
