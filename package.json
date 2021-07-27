@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "live-server": "^1.2.1",
-    "postcss": "^7.0.32",
+    "postcss": "^7.0.36",
     "websocket-extensions": "^0.1.4"
   }
 }
